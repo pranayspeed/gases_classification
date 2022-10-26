@@ -9,12 +9,10 @@ using namespace std;
 
 
 
-#include "DecisionTree.h"
+#include "DecisionTree_unprocessed.h"
 
 int predict_class(float *x)
-{
-    //std::cout <<" result !!";
-    
+{  
     return predict(x); 
 }
 
@@ -22,11 +20,16 @@ int predict_class(float *x)
 int main(int argc, char *argv[])
 {
 
-    string full_path = "./test_output.csv";
+    string full_path = "./test_output_unprocessed.csv";
+
+    string full_path_res = "./test_results.txt";
+    ofstream out_file;
+    out_file.open(full_path_res,  std::ofstream::out);
+
     int n,i;
     n = 32;
 
-    int limit = 3;
+    int limit = 5000;
     float X_data[32] = {0};
     int target = 0;
     ifstream inFile;
@@ -49,14 +52,14 @@ int main(int argc, char *argv[])
             if (i==32)
             {
                 target = stoi(word);
-                std::cout<<"\ntarget: "<< target <<"    ";
+                //std::cout<<"target: "<< target <<"    ";
 
             }
             else{
                         // add all the column data
             // of a row to a vector
             X_data[i] = stof(word.c_str());
-            std::cout<< X_data[i] <<" ";
+            //std::cout<< X_data[i] <<" ";
             }
             i++;
 
@@ -65,15 +68,15 @@ int main(int argc, char *argv[])
 
         // Process the data for decision
         int y_pred = predict_class(X_data);
-        std::cout<<"\t Predicted: "<< y_pred <<"\n";
-
+        //std::cout<<"\t Predicted: "<< y_pred <<"\n";
+        out_file << y_pred <<endl;
         limit--;
 
 
     }
 
 
-
+    out_file.close();
     inFile.close();
 
 

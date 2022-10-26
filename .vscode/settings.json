@@ -2,6 +2,7 @@
     "files.associations": {
         "iosfwd": "c",
         "sstream": "c",
-        "functional": "c"
+        "functional": "c",
+        "ostream": "c"
     }
 }
