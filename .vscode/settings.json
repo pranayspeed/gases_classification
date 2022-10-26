@@ -3,6 +3,7 @@
         "iosfwd": "c",
         "sstream": "c",
         "functional": "c",
-        "ostream": "c"
+        "ostream": "c",
+        "decisiontree_unprocessed.h": "c"
     }
 }

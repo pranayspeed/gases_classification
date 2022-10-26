@@ -7,6 +7,27 @@ from tqdm import tqdm
 import os
 
 
+def show_validation_results(C):
+        #C = C_board
+        print(C)
+
+        total_time = 0#sum(timeList)
+        avg_time = 0#np.mean(timeList)
+        acc = (C[0][0] + C[1][1]) / (C[0][0] + C[0][1] + C[1][0] + C[1][1])
+        precision = C[1][1] / (C[1][1] + C[0][1])
+        sensitivity = C[1][1] / (C[1][1] + C[1][0])
+        FP_rate = C[0][1] / (C[0][1] + C[0][0])
+        PPV = C[1][1] / (C[1][1] + C[1][0])
+        NPV = C[0][0] / (C[0][0] + C[0][1])
+        F1_score = (2 * precision * sensitivity) / (precision + sensitivity)
+        F_beta_score = (1+2**2) * (precision * sensitivity) / ((2**2)*precision + sensitivity)
+
+        print("\nacc: {},\nprecision: {},\nsensitivity: {},\nFP_rate: {},\nPPV: {},\nNPV: {},\nF1_score: {}, "
+                "\ntotal_time: {},\n average_time: {}".format(acc, precision, sensitivity, FP_rate, PPV, NPV, F1_score,
+                                                        total_time, avg_time))
+
+        print("F_best_score : ", F_beta_score)
+
 def txt_to_numpy(filename, row):
     file = open(filename)
     lines = file.readlines()
