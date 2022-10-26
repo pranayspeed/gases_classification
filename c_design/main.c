@@ -27,7 +27,6 @@
 
 #include <math.h>
 
-#include "logistic_regression_params.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -84,9 +83,9 @@ int result[1] ={0};
 #include "DecisionTree_unprocessed.h"
 
 
-void aiRun(float *input, float *result)
+void aiRun(float *input, int *result)
 {
-    result = predict(input);
+    *result = predict(input);
 
 }
 
